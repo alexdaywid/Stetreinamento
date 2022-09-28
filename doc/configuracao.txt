@@ -1,0 +1,18 @@
+Treinamento
+
+Roda Api
+
+Definir api com projeto principal 
+Alterar a stringConnection com dados referente a base sql server. 
+Roda a migration 
+Selecione o projeto de infrastructure e rode o comando database-update
+
+Front End
+Caminho onde se encontra o frontend
+Stefanini\src\Stefanini.UI\treinamento
+
+Install o angular npm install
+
+configuração atual do enviroment refente a url da Api
+
+export const environment = { production: false, url: 'https://localhost:7130/api/' };
