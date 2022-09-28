@@ -11,7 +11,7 @@ namespace Stefanini.Business.Validation
     {
         public PessoaValidator()
         {
-
+            RuleFor(p => p.Nome).NotEmpty().WithMessage("Nome é obrigatório.");
         }
 
     }

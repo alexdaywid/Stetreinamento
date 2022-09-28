@@ -1,0 +1,21 @@
+<app-breadcrumb [titulo]="titulo"></app-breadcrumb>
+
+<form class="form" [formGroup]="cidadeForm" (ngSubmit)="salvarOrAtualizar()" #formDir="ngForm">
+    <div class="form-group mb-3">
+      <label for="exampleFormControlInput1">Cidade</label>
+      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Informe a cidade" formControlName="nome">
+      <div *ngIf="nome.invalid && formDir.submitted" class="validation-error">
+        <p *ngIf ="nome.errors?.['required']"> Nome é obrigatório.</p>             
+      </div>
+    </div>
+    <div class="form-group mb-3">
+        <label for="exampleFormControlInput1">UF</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Informe UF" formControlName="uf">
+        <div *ngIf="uf.invalid && formDir.submitted" class="validation-error">
+          <p *ngIf ="uf.errors?.['required']"> UF é obrigatório.</p> 
+          <p *ngIf ="uf.errors?.['minlength']">UF deve ter pelo menos 2 caracteres</p>  
+          <p *ngIf ="uf.errors?.['maxlength']">UF deve ter no máximo 2 caracteres</p>              
+        </div>
+    </div>
+    <button type="submit" class="btn btn-info mb-3">Salvar</button>
+  </form>

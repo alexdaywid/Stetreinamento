@@ -1,0 +1,41 @@
+<app-breadcrumb [titulo]="titulo"></app-breadcrumb>
+
+<form class="form" [formGroup]="pessoaForm" (ngSubmit)="salvarOrAtualizar()" #formDir="ngForm">
+    <div class="form-group mb-3">
+      <label for="exampleFormControlInput1">Nome</label>
+      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="seu nome"  formControlName="nome">
+      <div *ngIf="nome.invalid && formDir.submitted" class="validation-error">
+        <p *ngIf ="nome.errors?.['required']"> Nome é obrigatório.</p>             
+      </div>
+      
+    </div>
+    <div class="form-group mb-3">
+        <label for="exampleFormControlInput1">CPF</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="000.000.000-00"  formControlName="cpf">
+        <div *ngIf="cpf.invalid && formDir.submitted" class="validation-error">
+          <p *ngIf ="cpf.errors?.['required']"> CPF é obrigatório.</p>  
+          <p *ngIf ="cpf.errors?.['minlength']">CPF deve ter pelo menos 11 caracteres</p>  
+          <p *ngIf ="cpf.errors?.['maxlength']">CPF deve ter no máximo 11 caracteres</p>            
+        </div>
+    </div>
+    <div class="form-group mb-3">
+        <label for="exampleFormControlInput1">Idade</label>
+        <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="sua idade"  formControlName="idade">
+        <div *ngIf="idade.invalid && formDir.submitted" class="validation-error">
+          <p *ngIf ="idade.errors?.['required']"> Idade é obrigatório.</p>             
+        </div>
+    </div>
+    
+    <div class="form-group mb-3">
+      <label for="exampleFormControlSelect1">Cidade/UF</label>
+      <select class="form-select" aria-label="Default select example" formControlName="cidade">
+        <option selected>Selecione....</option>
+        <option *ngFor="let cidade of this.cidades" value="{{cidade.id}}">{{cidade.nome}}/{{cidade.uf}}</option>
+      </select>
+      <div *ngIf="cidade.invalid && formDir.submitted" class="validation-error">
+        <p *ngIf ="cidade.errors?.['required']">Cidade é obrigatório.</p>             
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-info mb-3">Salvar</button>
+  </form>
